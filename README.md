@@ -5,7 +5,9 @@
 
 # geofabrik
 
-Download OpenStreetMap from <https://download.geofabrik.de/>
+Download OpenStreetMap from <https://download.geofabrik.de/>.
+
+No external dependencies\! Pure R\!
 
 ## Install
 
