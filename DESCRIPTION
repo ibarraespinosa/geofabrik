@@ -1,6 +1,6 @@
 Package: geofabrik
 Type: Package
-Title: Downloading Open Street Map data
+Title: Downloading Open Street Map Data
 Version: 0.1.0
 Date: 2020-08-09
 Authors@R: c( 
@@ -8,7 +8,7 @@ Authors@R: c(
          role = c("aut", "cre", "wdc"),
          email = "sergio.ibarra@usp.br",
          comment = c(ORCID = "0000-0002-3162-1905"))) 
-Description: Download 'OpenStreetMap' data from 'geofabrik' servers. This approach uses 
+Description: Download 'OpenStreetMap' data from 'geofabrik' servers <https://download.geofabrik.de/>. This approach uses 
     only the direct link downloads. Besides, this package
     does not import any external package.
 License: MIT + file LICENSE

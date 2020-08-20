@@ -119,12 +119,7 @@ of other services, this function relies only on direct links. Just that." />
 of other services, this function relies only on direct links. Just that.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_osm</span>(
-  <span class='no'>region</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pbf"</span>, <span class='st'>"shp"</span>, <span class='st'>"osm"</span>)[<span class='fl'>2</span>],
-  <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(),
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_osm</span>(<span class='no'>region</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"shp"</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,15 +145,41 @@ of other services, this function relies only on direct links. Just that.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Download a file</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>all regions were transformed with  iconv to "ASCII//TRANSLIT"</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># do not run</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>urlgeo</span>)
-<span class='fu'>get_osm</span>(<span class='st'>"Sao Tome and Principe"</span>)
-<span class='fu'>get_osm</span>(<span class='st'>"Sao Tome and Principe"</span>, <span class='st'>"pbf"</span>)
-<span class='fu'>get_osm</span>(<span class='st'>"Sao Tome and Principe"</span>, <span class='st'>"osm"</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>urlgeo</span>)</div><div class='output co'>#&gt;   Region    Subregion            x    LINKPBF     size    LINKSHP    LINKOSM
+#&gt; 1 Africa      Algeria      Algeria [.osm.pbf]   (90MB) [.shp.zip] [.osm.bz2]
+#&gt; 2 Africa       Angola       Angola [.osm.pbf]   (51MB) [.shp.zip] [.osm.bz2]
+#&gt; 3 Africa        Benin        Benin [.osm.pbf] (33.3MB) [.shp.zip] [.osm.bz2]
+#&gt; 4 Africa     Botswana     Botswana [.osm.pbf]   (60MB) [.shp.zip] [.osm.bz2]
+#&gt; 5 Africa Burkina Faso Burkina Faso [.osm.pbf]   (51MB) [.shp.zip] [.osm.bz2]
+#&gt; 6 Africa      Burundi      Burundi [.osm.pbf] (27.3MB) [.shp.zip] [.osm.bz2]
+#&gt;                                                         URL_OSMPBF
+#&gt; 1      https://download.geofabrik.de/africa/algeria-latest.osm.pbf
+#&gt; 2       https://download.geofabrik.de/africa/angola-latest.osm.pbf
+#&gt; 3        https://download.geofabrik.de/africa/benin-latest.osm.pbf
+#&gt; 4     https://download.geofabrik.de/africa/botswana-latest.osm.pbf
+#&gt; 5 https://download.geofabrik.de/africa/burkina-faso-latest.osm.pbf
+#&gt; 6      https://download.geofabrik.de/africa/burundi-latest.osm.pbf
+#&gt;                                                                 URL_SHP
+#&gt; 1      https://download.geofabrik.de/africa/algeria-latest-free.shp.zip
+#&gt; 2       https://download.geofabrik.de/africa/angola-latest-free.shp.zip
+#&gt; 3        https://download.geofabrik.de/africa/benin-latest-free.shp.zip
+#&gt; 4     https://download.geofabrik.de/africa/botswana-latest-free.shp.zip
+#&gt; 5 https://download.geofabrik.de/africa/burkina-faso-latest-free.shp.zip
+#&gt; 6      https://download.geofabrik.de/africa/burundi-latest-free.shp.zip
+#&gt;                                                         URL_OSMBZ2 units sizeMB
+#&gt; 1      https://download.geofabrik.de/africa/algeria-latest.osm.bz2    MB   90.0
+#&gt; 2       https://download.geofabrik.de/africa/angola-latest.osm.bz2    MB   51.0
+#&gt; 3        https://download.geofabrik.de/africa/benin-latest.osm.bz2    MB   33.3
+#&gt; 4     https://download.geofabrik.de/africa/botswana-latest.osm.bz2    MB   60.0
+#&gt; 5 https://download.geofabrik.de/africa/burkina-faso-latest.osm.bz2    MB   51.0
+#&gt; 6      https://download.geofabrik.de/africa/burundi-latest.osm.bz2    MB   27.3</div><div class='input'><span class='fu'>get_osm</span>(<span class='st'>"Sao Tome and Principe"</span>)</div><div class='output co'>#&gt; <span class='message'>file at /tmp/Rtmpn0Zadc/file25c3276d81b6.shp.zip</span></div><div class='input'><span class='fu'>get_osm</span>(<span class='st'>"Sao Tome and Principe"</span>, <span class='st'>"pbf"</span>)</div><div class='output co'>#&gt; <span class='message'>file at /tmp/Rtmpn0Zadc/file25c3535f19af.osm.pbf</span></div><div class='input'><span class='fu'>get_osm</span>(<span class='st'>"Sao Tome and Principe"</span>, <span class='st'>"osm"</span>)</div><div class='output co'>#&gt; <span class='message'>file at /tmp/Rtmpn0Zadc/file25c33007fe2f.osm.bz2</span></div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
